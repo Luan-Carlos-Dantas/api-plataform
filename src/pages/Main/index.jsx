@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Container } from "./styles";
+import { FaSearch } from "react-icons/fa";
 
-export default function Main() {
+import { Container, GitLogo, Title, Form, Input, Button } from "./styles";
+
+import githublogo from "../../assets/images/github-logo.svg";
+
+// eslint-disable-next-line react/function-component-definition
+const MainPage = () => {
+  const [login, setLogin] = useState("");
+
   return (
     <Container>
-      <img
-        src="https://devsamurai-materials.s3.amazonaws.com/templates/avatar-gradient-dark.svg"
-        height="256"
-        alt="Dev Samurai"
-      />
-      <h1>Fala Samurai!</h1>
-      <p>Esse é o template typescript básico da Dev Samurai para React.</p>
+      <GitLogo src={githublogo} alt="API Github" />
+      <Title>API Github</Title>
+      <Form>
+        <Input
+          value={login}
+          onChange={(ev) => setLogin(ev.target.value)}
+          placeholder="Digite o nome do Usuário"
+        />
+        <Button to={`/${login}/repositories`}>
+          <FaSearch size={24} />
+        </Button>
+      </Form>
     </Container>
   );
-}
+};
+
+export default MainPage;
