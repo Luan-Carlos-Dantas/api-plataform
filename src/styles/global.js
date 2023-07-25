@@ -10,7 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.gray600};
     font-family: ${(props) => props.theme.fontFamily.sans};
     padding: 0;
-    overflow-y: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
