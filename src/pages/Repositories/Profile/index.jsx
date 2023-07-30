@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import PropTypes from "prop-types";
@@ -34,7 +35,9 @@ const Profile = ({ user }) => (
         {user.blog && (
           <Data>
             <FaLink size={20} />
-            <a href={`\\${user.blog}`}>{user.blog}</a>
+            <a href={`${user.blog}`} target="_blank">
+              {user.blog}
+            </a>
           </Data>
         )}
       </Inner>

@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Container = styled.main`
   display: flex;
   min-height: 100vh;
@@ -10,8 +16,7 @@ export const Container = styled.main`
 export const Sidebar = styled.aside`
   background: ${(props) => props.theme.colors.gray900};
   min-width: 8rem;
-  max-height: 100vh;
-  overflow-y: hidden;
+  height: 100%;
 `;
 
 export const Main = styled.aside`
@@ -19,8 +24,7 @@ export const Main = styled.aside`
   padding: 40px;
   width: 100%;
   flex: 1;
-  height: 100vh;
-  overflow-y: hidden;
+  height: 100vw;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     height: 100%;

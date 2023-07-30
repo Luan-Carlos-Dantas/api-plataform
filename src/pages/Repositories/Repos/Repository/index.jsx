@@ -1,24 +1,34 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/function-component-definition */
 import React from "react";
+import PropTypes from "prop-types";
 import { Container, Name, Description, Footer, Lang, Link } from "./styles";
 
-const Repository = () => (
-  <Container>
-    <Name>Hello World</Name>
-    <Description>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque quia ullam,
-      eum molestiae exercitationem, officia porro est vel optio accusamus
-      sapiente mollitia, odio vero dignissimos praesentium? Quaerat tempora
-      optio veniam.
-    </Description>
-    <Footer color="">
-      <Lang>Repository Lang</Lang>
-      <Link href="#" target="blank">
-        Ver
-      </Link>
-    </Footer>
-  </Container>
-);
+import { langColors } from "../../../../services/config";
 
+const Repository = ({ repository }) => {
+  const color =
+    langColors[repository.language && repository.language.toLowerCase()];
+  return (
+    <Container color={color}>
+      <Name>{repository.name}</Name>
+      <Description>{repository.description}</Description>
+      <Footer color={color}>
+        <Lang>{repository.language}</Lang>
+        <Link href={repository.html_url} target="blank">
+          Ver
+        </Link>
+      </Footer>
+    </Container>
+  );
+};
+Repository.propTypes = {
+  repository: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    html_url: PropTypes.string,
+    language: PropTypes.string,
+  }).isRequired,
+};
 export default Repository;
